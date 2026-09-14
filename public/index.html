@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Video Call</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <section id="join-screen" class="screen">
+    <div class="join-card">
+      <h1>Simple Video Call</h1>
+      <p class="subtitle">Enter a room name and share it with the person you want to call.</p>
+      <input id="room-input" type="text" placeholder="Room name (e.g. team-standup)" autocomplete="off" />
+      <button id="join-btn">Join call</button>
+      <p id="join-error" class="error" hidden></p>
+    </div>
+  </section>
+
+  <section id="call-screen" class="screen" hidden>
+    <header class="call-header">
+      <div class="room-info">
+        <span>Room: <strong id="room-name"></strong></span>
+        <button id="copy-link-btn" title="Copy invite link">Copy invite link</button>
+      </div>
+      <span id="status" class="status">Connecting…</span>
+    </header>
+
+    <div id="video-grid" class="video-grid"></div>
+
+    <footer class="controls">
+      <button id="mic-btn" class="control-btn" title="Mute/unmute microphone">🎤</button>
+      <button id="cam-btn" class="control-btn" title="Turn camera on/off">📷</button>
+      <button id="hangup-btn" class="control-btn hangup" title="Leave call">📞</button>
+    </footer>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
