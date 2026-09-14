@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no" />
+  <title>Chatta — Live Video Chat</title>
+  <meta name="theme-color" content="#14161a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Chatta" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Email sign in -->
+  <section id="auth-screen" class="screen">
+    <div class="join-card">
+      <h1>💬 Chatta</h1>
+      <p class="subtitle">Sign in with your email to get started.</p>
+
+      <input id="email-input" type="email" placeholder="you@example.com" autocomplete="email" />
+
+      <button id="send-code-btn" class="primary-btn">Send verification code</button>
+      <p id="auth-error" class="error" hidden></p>
+    </div>
+  </section>
+
+  <!-- Email code verification -->
+  <section id="verify-screen" class="screen" hidden>
+    <div class="join-card">
+      <h1>Check your email</h1>
+      <p class="subtitle">Enter the 6-digit code we sent to <strong id="verify-email"></strong></p>
+
+      <input id="code-input" type="text" inputmode="numeric" placeholder="123456" maxlength="6" autocomplete="one-time-code" />
+
+      <button id="verify-btn" class="primary-btn">Verify &amp; Continue</button>
+      <button id="resend-btn" class="secondary-btn">Resend code</button>
+      <button id="change-email-btn" class="secondary-btn">Use a different email</button>
+      <p id="verify-error" class="error" hidden></p>
+    </div>
+  </section>
+
+  <!-- Welcome / profile screen -->
+  <section id="welcome-screen" class="screen" hidden>
+    <div class="join-card">
+      <h1>💬 Chatta</h1>
+      <p class="subtitle">Meet new people over live video, instantly.</p>
+
+      <input id="name-input" type="text" placeholder="Your name" autocomplete="off" maxlength="20" />
+
+      <div class="field-label">I am a</div>
+      <div class="pill-group" id="gender-group">
+        <button type="button" class="pill" data-value="male">Male</button>
+        <button type="button" class="pill" data-value="female">Female</button>
+        <button type="button" class="pill" data-value="other">Other</button>
+      </div>
+
+      <div class="field-label">Show me</div>
+      <div class="pill-group" id="lookingfor-group">
+        <button type="button" class="pill" data-value="everyone">Everyone</button>
+        <button type="button" class="pill" data-value="male">Men</button>
+        <button type="button" class="pill" data-value="female">Women</button>
+      </div>
+
+      <label class="age-check">
+        <input type="checkbox" id="age-check" />
+        I confirm I am 18 years of age or older
+      </label>
+
+      <button id="start-btn" class="primary-btn">Start Matching</button>
+      <p id="welcome-error" class="error" hidden></p>
+    </div>
+  </section>
+
+  <!-- Searching screen -->
+  <section id="searching-screen" class="screen" hidden>
+    <div class="join-card">
+      <div class="spinner"></div>
+      <h1>Finding someone…</h1>
+      <p class="subtitle">Hang tight, we're connecting you with a new match.</p>
+      <button id="cancel-search-btn" class="secondary-btn">Cancel</button>
+    </div>
+  </section>
+
+  <!-- Call screen -->
+  <section id="call-screen" class="screen" hidden>
+    <header class="call-header">
+      <div class="room-info">
+        <span id="peer-name" class="peer-name"></span>
+      </div>
+      <span id="status" class="status">Connecting…</span>
+    </header>
+
+    <div id="video-grid" class="video-grid"></div>
+    <div id="heart-layer" class="heart-layer"></div>
+
+    <footer class="controls">
+      <button id="mic-btn" class="control-btn" title="Mute/unmute microphone">🎤</button>
+      <button id="cam-btn" class="control-btn" title="Turn camera on/off">📷</button>
+      <button id="like-btn" class="control-btn" title="Send a like">❤️</button>
+      <button id="next-btn" class="control-btn next" title="Next match">⏭️</button>
+      <button id="hangup-btn" class="control-btn hangup" title="Leave">📞</button>
+    </footer>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
